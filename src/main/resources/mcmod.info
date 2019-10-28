@@ -1,7 +1,7 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
+  "modid": "storagecrates",
+  "name": "Jester's Storage Crates",
   "description": "Example placeholder mod.",
   "version": "${version}",
   "mcversion": "${mcversion}",
