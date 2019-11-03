@@ -1,0 +1,6 @@
+tile.storagecrates:mbe30_inventory_basic.name=Storage Crate
+tile.storagecrates:mbe30_inventory_basic_m.name=Enhanced Storage Crate
+tile.storagecrates:mbe30_inventory_basic_l.name=Reinforced Storage Crate
+container.storagecrates:mbe30_inventory_basic.name=Storage Crate
+container.storagecrates:mbe30_inventory_basic_m.name=Enhanced Storage Crate
+container.storagecrates:mbe30_inventory_basic_l.name=Reinforced Storage Crate
