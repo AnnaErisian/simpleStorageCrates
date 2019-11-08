@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
@@ -43,6 +44,9 @@ public class BlockInventoryBasic extends BlockContainer {
     final int type;
     public BlockInventoryBasic(int type) {
         super(Material.ROCK);
+        this.setResistance(25.0F);
+        this.setHardness(0.5F);
+        this.setHarvestLevel("axe", 0);
         this.type = type;
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);     // the block will appear on the Blocks tab.
     }
