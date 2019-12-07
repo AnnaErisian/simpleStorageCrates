@@ -4,16 +4,17 @@ import blue.thejester.storagecrates.StorageCrates;
 import blue.thejester.storagecrates.gui.ContainerBasic;
 import blue.thejester.storagecrates.gui.GuiHandlerMBE30;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.network.play.server.SPacketWindowItems;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.util.text.TextComponentTranslation;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.items.CapabilityItemHandler;
 
 import java.util.Arrays;
 
@@ -27,12 +28,14 @@ public class TileEntityInventoryBasic extends TileEntity implements IInventory {
     // Create and initialize the items variable that will store store the items
     private final int NUMBER_OF_SLOTS = ContainerBasic.TE_INVENTORY_SLOT_COUNT;
     public final int pages;
-    private ItemStack[] itemStacks;
+    public ItemStack[] itemStacks;
+    private InventoryCapability inventoryCapability;
 
     public TileEntityInventoryBasic(int pages)
     {
         itemStacks = new ItemStack[pages * NUMBER_OF_SLOTS];
         this.pages = pages;
+        this.inventoryCapability = new InventoryCapability(this);
         clear();
     }
 
@@ -59,6 +62,22 @@ public class TileEntityInventoryBasic extends TileEntity implements IInventory {
         }
 
         return true;
+    }
+
+    @Override
+    public boolean hasCapability(Capability<?> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return true;
+        }
+        return super.hasCapability(capability, facing);
+    }
+
+    @Override
+    public <T> T getCapability(Capability<T> capability, EnumFacing facing) {
+        if (capability == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+            return (T) this.inventoryCapability;
+        }
+        return super.getCapability(capability, facing);
     }
 
     /**
