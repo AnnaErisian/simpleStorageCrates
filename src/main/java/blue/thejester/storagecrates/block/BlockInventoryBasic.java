@@ -43,9 +43,9 @@ public class BlockInventoryBasic extends BlockContainer {
 
     final int type;
     public BlockInventoryBasic(int type) {
-        super(Material.ROCK);
+        super(Material.WOOD);
         this.setResistance(25.0F);
-        this.setHardness(0.5F);
+        this.setHardness(2.5F);
         this.setHarvestLevel("axe", 0);
         this.type = type;
         this.setCreativeTab(CreativeTabs.BUILDING_BLOCKS);     // the block will appear on the Blocks tab.
