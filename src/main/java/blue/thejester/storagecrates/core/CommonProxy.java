@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 
-public abstract class CommonProxy {
+public class CommonProxy {
 
     public static Block blockInventoryBasic;  // this holds the unique instance of your block
     public static ItemBlock itemBlockInventoryBasic; // and the corresponding item form that block
@@ -126,5 +126,7 @@ public abstract class CommonProxy {
      *
      * @return true if this is a dedicated server, false otherwise
      */
-    abstract public boolean isDedicatedServer();
+    public boolean isDedicatedServer() {
+        return true;
+    }
 }
